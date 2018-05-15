@@ -11,7 +11,7 @@ import (
 const (
 	cfdns = "cloudflare-dns.com"
 
-	// NoError  [RFC1035]
+	// NoError [RFC1035]
 	NoError = 0
 	// FormErr [RFC1035]
 	FormErr = 1
@@ -29,7 +29,7 @@ const (
 	YXRRSet = 7
 	// NXRRSet [RFC2136]
 	NXRRSet = 8
-	// NotAuth  [RFC2136] [RFC2845]
+	// NotAuth [RFC2136] [RFC2845]
 	NotAuth = 9
 	// NotZone [RFC2136]
 	NotZone = 10
