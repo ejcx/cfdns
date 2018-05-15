@@ -17,7 +17,8 @@ func ExampleDNSRequest_ARequest() {
 		log.Printf("Unexpected DNS Response: %s", err)
 		return
 	}
-	fmt.Println(resp.Answer[0].Data)
+	fmt.Printf("%d\n", resp.Status)
+	// Output: 0
 }
 
 // This is an example of how to make a TXT request.
@@ -31,15 +32,16 @@ func ExampleDNSRequest_TXTRequest() {
 		log.Printf("Unexpected DNS Response: %s", err)
 		return
 	}
-	fmt.Println(resp.Answer[0].Data)
+	fmt.Printf("%d\n", resp.Status)
+	// Output: 0
 }
 
 func TestARequest(t *testing.T) {
-	dc := NewA()
-	resp, err := dc.Do("cloudflare.com")
+	resp, err := NewA().Do("cloudflare.com")
 	if err != nil {
 		t.Fatalf("Could not make dns request: %s", err)
 	}
+	fmt.Println(resp)
 	if resp.Status != 0 {
 		t.Fatalf("Cloudflare having major outage: %d", resp.Status)
 	}

@@ -110,7 +110,7 @@ func NewTSIG() *DNSRequest {
 
 // NewTXT a request for an TXT record.
 func NewTXT() *DNSRequest {
-	return newReq("TSIG")
+	return newReq("TXT")
 }
 
 // NewURI a request for an URI record.
