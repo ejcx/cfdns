@@ -53,6 +53,9 @@ const (
 	BADCOOKIE = 23
 )
 
+// Examples is the Examples type.
+type Examples int
+
 // DNSResponse is a JSON form of a DNS response.
 // It contains the raw fields as they are abbreviated
 // in the Cloudflare DNS over HTTPS response.
