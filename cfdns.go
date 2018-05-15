@@ -1,3 +1,5 @@
+// Package cfdns is a DNS client that uses the Cloudflare 1.1.1.1 public resolver.
+// It uses DNS over HTTPS instead of using the DNS protocol.
 package cfdns
 
 import (
@@ -68,10 +70,13 @@ type DNSResponse struct {
 	Answer    []Answer    `json:"Answer"`
 }
 
+// Question is the question part of the DNS request echo'd back in the response.
 type Question struct {
 	Name string `json:"name"`
 	Type int    `json:"type"`
 }
+
+// Answer is part of the DNS response. It contains the meat of the response.
 type Answer struct {
 	Name string `json:"name"`
 	Type int    `json:"type"`
@@ -79,6 +84,7 @@ type Answer struct {
 	Data string `json:"data"`
 }
 
+// Authority is part of the DNS response.
 type Authority struct {
 	Name string `json:"name"`
 	Type int    `json:"type"`
