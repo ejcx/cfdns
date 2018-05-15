@@ -7,7 +7,7 @@ import (
 )
 
 // This is an example of how to make an A request.
-func ExampleARequest() {
+func ExampleExamples_ARequest() {
 	resp, err := NewA().Do("cloudflare.com")
 	if err != nil {
 		log.Printf("Could not make DNS Request: %s", err)
@@ -21,7 +21,7 @@ func ExampleARequest() {
 }
 
 // This is an example of how to make a TXT request.
-func ExampleTXTRequest() {
+func ExampleExamples_TXTRequest() {
 	resp, err := NewTXT().Do("cloudflare.com")
 	if err != nil {
 		log.Printf("Could not make DNS Request: %s", err)
