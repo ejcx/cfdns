@@ -1,8 +1,38 @@
 package cfdns
 
 import (
+	"fmt"
+	"log"
 	"testing"
 )
+
+// This is an example of how to make an A request.
+func ExampleARequest() {
+	resp, err := NewA().Do("cloudflare.com")
+	if err != nil {
+		log.Printf("Could not make DNS Request: %s", err)
+		return
+	}
+	if !resp.OK() {
+		log.Printf("Unexpected DNS Response: %s", err)
+		return
+	}
+	fmt.Println(resp.Answer[0].Data)
+}
+
+// This is an example of how to make a TXT request.
+func ExampleTXTRequest() {
+	resp, err := NewTXT().Do("cloudflare.com")
+	if err != nil {
+		log.Printf("Could not make DNS Request: %s", err)
+		return
+	}
+	if !resp.OK() {
+		log.Printf("Unexpected DNS Response: %s", err)
+		return
+	}
+	fmt.Println(resp.Answer[0].Data)
+}
 
 func TestARequest(t *testing.T) {
 	dc := NewA()
