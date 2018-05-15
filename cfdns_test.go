@@ -8,7 +8,7 @@ import (
 
 // This is an example of how to make an A request.
 func ExampleDNSRequest() {
-	resp, err := NewA().Do("cloudflare.com")
+	resp, err := NewA().Do("1dot1dot1dot1.cloudflare-dns.com")
 	if err != nil {
 		log.Printf("Could not make DNS Request: %s", err)
 		return
@@ -17,13 +17,18 @@ func ExampleDNSRequest() {
 		log.Printf("Unexpected DNS Response: %s", err)
 		return
 	}
-	fmt.Printf("%d\n", resp.Status)
-	// Output: 0
+	// Find 1.1.1.1!
+	ip := resp.Answer[0].Data
+	if ip == "1.0.0.1" {
+		ip = resp.Answer[1].Data
+	}
+	fmt.Printf("%s\n", ip)
+	// Output: 1.1.1.1
 }
 
 // This is an example of how to make a TXT request.
 func ExampleDNSRequest_TXTRequest() {
-	resp, err := NewTXT().Do("cloudflare.com")
+	resp, err := NewTXT().Do("1dot1dot1dot1.cloudflare-dns.com")
 	if err != nil {
 		log.Printf("Could not make DNS Request: %s", err)
 		return
@@ -32,7 +37,7 @@ func ExampleDNSRequest_TXTRequest() {
 		log.Printf("Unexpected DNS Response: %s", err)
 		return
 	}
-	fmt.Printf("%d\n", resp.Status)
+	fmt.Println(resp.Status)
 	// Output: 0
 }
 

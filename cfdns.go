@@ -57,28 +57,33 @@ const (
 // It contains the raw fields as they are abbreviated
 // in the Cloudflare DNS over HTTPS response.
 type DNSResponse struct {
-	Status   int  `json:"Status"`
-	TC       bool `json:"TC"`
-	RD       bool `json:"RD"`
-	RA       bool `json:"RA"`
-	AD       bool `json:"AD"`
-	CD       bool `json:"CD"`
-	Question []struct {
-		Name string `json:"name"`
-		Type int    `json:"type"`
-	} `json:"Question"`
-	Authority []struct {
-		Name string `json:"name"`
-		Type int    `json:"type"`
-		TTL  int    `json:"TTL"`
-		Data string `json:"data"`
-	} `json:"Authority"`
-	Answer []struct {
-		Name string `json:"name"`
-		Type int    `json:"type"`
-		TTL  int    `json:"TTL"`
-		Data string `json:"data"`
-	} `json:"Answer"`
+	Status    int         `json:"Status"`
+	TC        bool        `json:"TC"`
+	RD        bool        `json:"RD"`
+	RA        bool        `json:"RA"`
+	AD        bool        `json:"AD"`
+	CD        bool        `json:"CD"`
+	Question  []Question  `json:"Question"`
+	Authority []Authority `json:"Authority"`
+	Answer    []Answer    `json:"Answer"`
+}
+
+type Question struct {
+	Name string `json:"name"`
+	Type int    `json:"type"`
+}
+type Answer struct {
+	Name string `json:"name"`
+	Type int    `json:"type"`
+	TTL  int    `json:"TTL"`
+	Data string `json:"data"`
+}
+
+type Authority struct {
+	Name string `json:"name"`
+	Type int    `json:"type"`
+	TTL  int    `json:"TTL"`
+	Data string `json:"data"`
 }
 
 // DNSRequest is all the information needed to make a DNS Request.
